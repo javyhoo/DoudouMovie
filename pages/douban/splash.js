@@ -18,6 +18,11 @@ Page({
         this.setData({ subjects: data.subjects })
       }
     )
+
+    wx.setStorage({
+      data: true,
+      key: 'has_shown_splash',
+    })
   },
 
   /**
