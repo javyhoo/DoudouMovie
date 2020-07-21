@@ -1,7 +1,7 @@
 //app.js
 let app = require("./sim.js/index.js")
 
-App(Object.assign(app,{
+App(Object.assign(app, {
   onLaunch: function () {
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []

@@ -1,2 +1,8 @@
 <!--pages/douban/index.wxml-->
-<text>pages/douban/index.wxml</text>
+<swiper style="height:450rpx" indicator-dots autoplay="true" interval="5000" duration="1000">
+	<swiper-item wx:for="{{ boards[0].movies }}" wx:key="{{ item.id }}">
+		<navigator hover-class="none">
+			<image style="height:450rpx;width:750rpx;" src="{{ item.images.large}}" mode="aspectFill" />
+		</navigator>
+	</swiper-item>
+</swiper>

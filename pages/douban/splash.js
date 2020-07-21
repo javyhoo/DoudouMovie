@@ -1,4 +1,5 @@
 // pages/douban/splash.js
+
 Page({
 
   /**
@@ -12,6 +13,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+
     let app = getApp()
     app.request("https://api.douban.com/v2/movie/coming_soon?star=0&count=3&apikey=0df993c66c0c636e29ecbb5344252a4a").then(
       data => {
@@ -73,4 +75,5 @@ Page({
   onShareAppMessage: function () {
 
   }
+
 })

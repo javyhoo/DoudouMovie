@@ -5,14 +5,24 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    boards: [{ key: 'in_theaters' }, { key: 'coming_soon' }, { key: 'top250' }],
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    wx.getStorage({
+      key: 'has_shown_splash',
+      success: res => {
+        this.retrieveData()
+      },
+      fail: err => {
+        wx.redirectTo({
+          url: '/pages/douban/splash',
+        })
+      }
+    })
   },
 
   /**
@@ -62,5 +72,34 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+
+  retrieveData() {
+    let app = getApp()
+
+    var promises = this.data.boards.map(function (board) {
+      return app.request(`https://api.douban.com/v2/movie/${board.key}?star=0&count=10&apikey=0df993c66c0c636e29ecbb5344252a4a`)
+        .then(function (d) {
+          if (!d) {
+            return board
+          }
+
+          board.title = d.title
+          board.movies = d.subjects
+          return board
+        }).catch(err => console.log(err))
+    })
+
+    return app.promise.all(promises).then(boards => {
+      if (!boards || !boards.length) {
+        return
+      }
+
+      this.setData({ boards: boards, loading: false })
+    })
+
   }
+
+
+
 })

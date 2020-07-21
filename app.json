@@ -1,8 +1,8 @@
 {
   "pages":[
-    "pages/index/index",
-    "pages/douban/splash",
     "pages/douban/index",
+    "pages/douban/splash",
+    "pages/index/index",
     "pages/logs/logs"
   ],
   "window":{
