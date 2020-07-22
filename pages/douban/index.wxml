@@ -16,9 +16,11 @@
 		<view style="padding:10px" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
 			<scroll-view scroll-x>
 				<view style="display:flex;">
-					<navigator wx:for="{{ item.movies }}" wx:key="{{ item.id }}">
-						<image style="width:180rpx; height:250rpx;" src="{{ item.images.large }}" mode="aspectFill" />
-						<text style="text-align:center;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;font-size:13px;padding-top:5rpx">{{ item.title }}</text>
+					<navigator url="../douban/item?id={{ item.id }}" wx:for="{{ item.movies }}" wx:key="{{ item.id }}">
+						<view style="display:flex;flex-direction:column;width:180rpx;margin:10rpx;">
+							<image style="width:180rpx; height:250rpx;" src="{{ item.images.large }}" mode="aspectFill" />
+							<text style="text-align:center;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;font-size:13px;padding-top:5rpx">{{ item.title }}</text>
+						</view>
 					</navigator>
 				</view>
 			</scroll-view>
