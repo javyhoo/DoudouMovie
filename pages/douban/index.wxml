@@ -28,10 +28,10 @@
 	</view>
 
 	<view class="weui-panel__ft">
-		<navigator class="weui-cell weui-cell_access weui-cell_link">
+		<navigator url="../douban/list" class="weui-cell weui-cell_access weui-cell_link">
 			<view class="weui-cell__bd">更多</view>
 			<view class="weui-cell__ft weui-cell__ft_in-access"></view>
-		</navigator>
+		</navigator> 
 	</view>
 
 </view>

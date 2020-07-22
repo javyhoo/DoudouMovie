@@ -2,6 +2,7 @@
   "pages":[
     "pages/douban/index",
     "pages/douban/splash",
+    "pages/douban/list",
     "pages/douban/item",
     "pages/index/index",
     "pages/logs/logs"
