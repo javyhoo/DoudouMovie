@@ -4,6 +4,7 @@
     "pages/douban/splash",
     "pages/douban/list",
     "pages/douban/item",
+    "pages/douban/search",
     "pages/index/index",
     "pages/logs/logs"
   ],
