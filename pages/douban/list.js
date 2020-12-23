@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    type: 'in_theaters',
+    type: '',
     page: 1,
     size: 20,
     total: 1,
@@ -21,14 +21,13 @@ Page({
       title: '加载中',
     })
 
-    console.log("javy type = "+this.data.type);
+    console.log("javy type = "+this.data.type+ " ; size = "+start);
 
-    return app.request(`https://api.douban.com/v2/movie/${this.data.type}?start=${start}&count=${this.data.size}&apikey=0df993c66c0c636e29ecbb5344252a4a`)
+    return app.request(`https://frodo.douban.com/api/v2/subject_collection/${this.data.type}/items?start=${start}&count=${this.data.size}&&apiKey=054022eaeae0b00e0fc068c0c0a2102a`)
       .then(res => {
-        if (res.subjects.length) {
-          console.log(res)
-
-          let movies = this.data.movies.concat(res.subjects)
+        console.log(res)
+        if (res.subject_collection_items.length) {
+          let movies = this.data.movies.concat(res.subject_collection_items)
           let total = Math.floor(res.total/this.data.size)
           this.setData({ movies: movies, total: total, page:this.data.page })
           wx.setNavigationBarTitle({
@@ -54,8 +53,13 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log(options);
     type:options.type;
-    console.log("javy onLoad type = "+options.type);
+
+    this.setData({
+      type:options.key
+    })
+    
     this.retrieve()
   },
 

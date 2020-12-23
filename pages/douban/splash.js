@@ -15,9 +15,9 @@ Page({
   onLoad: function (options) {
 
     let app = getApp()
-    app.request("https://api.douban.com/v2/movie/coming_soon?star=0&count=3&apikey=0df993c66c0c636e29ecbb5344252a4a").then(
+    app.request("https://frodo.douban.com/api/v2/subject_collection/movie_showing/items?start=0&count=5&apiKey=054022eaeae0b00e0fc068c0c0a2102a").then(
       data => {
-        this.setData({ subjects: data.subjects })
+        this.setData({ subjects: data.subject_collection_items })
       }
     )
 

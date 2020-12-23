@@ -2,7 +2,7 @@
 <swiper style="height:450rpx" indicator-dots autoplay="true" interval="5000" duration="1000">
 	<swiper-item wx:for="{{ boards[0].movies }}" wx:key="{{ item.id }}">
 		<navigator hover-class="none">
-			<image style="height:450rpx;width:750rpx;" src="{{ item.images.large}}" mode="aspectFill" />
+			<image style="height:450rpx;width:750rpx;" src="{{ item.cover.url}}" mode="aspectFill" />
 		</navigator>
 	</swiper-item>
 </swiper>
@@ -18,7 +18,7 @@
 				<view style="display:flex;">
 					<navigator url="../douban/item?id={{ item.id }}" wx:for="{{ item.movies }}" wx:key="{{ item.id }}">
 						<view style="display:flex;flex-direction:column;width:180rpx;margin:10rpx;">
-							<image style="width:180rpx; height:250rpx;" src="{{ item.images.large }}" mode="aspectFill" />
+							<image style="width:180rpx; height:250rpx;" src="{{ item.cover.url }}" mode="aspectFill" />
 							<text style="text-align:center;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;font-size:13px;padding-top:5rpx">{{ item.title }}</text>
 						</view>
 					</navigator>
@@ -28,8 +28,8 @@
 	</view>
 
 	<view class="weui-panel__ft">
-		<navigator url="../douban/list" class="weui-cell weui-cell_access weui-cell_link">
-			<view class="weui-cell__bd">更多</view>
+		<navigator url="../douban/list?key={{ item.key }}" class="weui-cell weui-cell_access weui-cell_link">
+			<view class="weui-cell__bd">查看更多</view>
 			<view class="weui-cell__ft weui-cell__ft_in-access"></view>
 		</navigator>
 	</view>

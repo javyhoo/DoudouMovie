@@ -34,19 +34,17 @@ Page({
     })
 
     //豆瓣搜索接口失败，搜索功能无法实现
-    return app.request(`https://api.douban.com/v2/movie/search?q=${this.data.searchWords}&start=${start}&count=${this.data.size}&apikey=0df993c66c0c636e29ecbb5344252a4a`)
+    return app.request(`https://frodo.douban.com/api/v2/search/weixin?q=${this.data.searchWords}&start=${start}&count=${this.data.size}&apikey=054022eaeae0b00e0fc068c0c0a2102a`)
       .then(res => {
-        console.log("res " + res)
-        if (res.subjects.length) {
-          console.log(res)
-
-          let movies = this.data.movies.concat(res.subjects)
+        console.log(res)
+        if (res.items.length) {
+          let movies = this.data.movies.concat(res.items)
           let total = Math.floor(res.total / this.data.size)
           this.setData({ movies: movies, total: total, page: this.data.page })
           wx.setNavigationBarTitle({
             title: res.title
           })
-          // console.log(movies)
+          console.log(movies)
         }
       }).catch(err => {
         console.error(err)
@@ -78,10 +76,10 @@ Page({
 
     clearTimeout(this.data.requestinternal)
 
-    console.log("javy " + words)
+    console.log(words)
 
     this.data.requestinternal = setTimeout(() => {
-      app.request(`https://api.douban.com/v2/movie/search?q=${words}&start=0&count=6&apikey=0df993c66c0c636e29ecbb5344252a4a`).then(d => {
+      app.request(`https://frodo.douban.com/api/v2/search/weixin?q=${words}&start=0&count=20&apiKey=054022eaeae0b00e0fc068c0c0a2102a`).then(d => {
         console.log(d)
 
         if (d.subjects.length) {

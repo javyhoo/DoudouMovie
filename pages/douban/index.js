@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    boards: [{ key: 'in_theaters' }, { key: 'coming_soon' }, { key: 'top250' }],
+    boards: [{ key: 'movie_showing' }, { key: 'movie_hot_gaia' }, { key: 'tv_hot' }, { key: 'tv_variety_show' }, { key: 'book_bestseller' }, { key: 'music_single' }],
   },
 
   /**
@@ -86,14 +86,17 @@ Page({
     let app = getApp()
 
     var promises = this.data.boards.map(function (board) {
-      return app.request(`https://api.douban.com/v2/movie/${board.key}?star=0&count=10&apikey=0df993c66c0c636e29ecbb5344252a4a`)
+      return app.request(`https://frodo.douban.com/api/v2/subject_collection/${board.key}/items?start=0&count=10&apiKey=054022eaeae0b00e0fc068c0c0a2102a`)
         .then(function (d) {
           if (!d) {
             return board
           }
 
-          board.title = d.title
-          board.movies = d.subjects
+          console.log(d)
+
+          board.title = d.subject_collection.name
+          board.movies = d.subject_collection_items
+          console.log(board)
           return board
         }).catch(err => console.log(err))
     })

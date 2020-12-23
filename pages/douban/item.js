@@ -16,7 +16,7 @@ Page({
     let app = getApp()
     console.log("java id = " + options.id);
 
-    app.request(`https://api.douban.com/v2/movie/subject/${options.id}?apikey=0df993c66c0c636e29ecbb5344252a4a`).then(
+    app.request(`https://frodo.douban.com/api/v2/movie/${options.id}?apikey=054022eaeae0b00e0fc068c0c0a2102a`).then(
       d => {
         this.setData({ movie: d, loading: false });
         wx.setNavigationBarTitle({

@@ -6,19 +6,19 @@
 				<navigator url="../douban/item?id={{ item.id }}" wx:for="{{ movies }}" wx:key="{{ item.id }}" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
 
 					<view class="weui-media-box__hd weui-media-box__hd_in-appmsg" style="height:inherit;width:120rpx">
-						<image style=" width:128rpx;height:168rpx;" class="weui-media-box__thumb" src=" {{ item.images.small}}" />
+						<image style=" width:128rpx;height:168rpx;" class="weui-media-box__thumb" src=" {{ item.cover.url}}" />
 					</view>
 
 					<view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
 						<view class="weui-media-box__title">{{ item.title }}</view>
 						<view class="weui-media-box__desc">{{ item.original_title }} ({{ item.year }})</view>
 						<view class="weui-media-box__info">
-							导演：<block wx:for="{{ item.directors }}" wx:key="{{ item.id }}">{{ item.name }}</block>
+							导演：<block wx:for="{{ item.directors }}" wx:key="{{ item.id }}">{{ item }}</block>
 						</view>
 					</view>
 
 					<view class="weui-media-box__ft">
-						<view class="weui-badge">{{ item.rating.average }}</view>
+						<view class="weui-badge">{{ item.rating.value }}</view>
 					</view>
 
 				</navigator>
